@@ -1,3 +1,5 @@
+// import '$' from 'jquery';
+
 module.exports = function Cart(cart) {
     this.items = cart.items || {};
     this.totalItems = cart.totalItems || 0;
@@ -14,10 +16,22 @@ module.exports = function Cart(cart) {
         this.totalPrice += cartItem.item.price;
     };
 
-    this.remove = function(id) {
-        this.totalItems -= this.items[id].quantity;
-        this.totalPrice -= this.items[id].price;
-        delete this.items[id];
+    this.remove = function (id) {
+        
+        try {
+            
+            this.totalItems -= this.items[id].quantity;
+            this.totalPrice -= this.items[id].price;
+            delete this.items[id];
+
+        }
+        catch (error) {
+            // alert("Falha ao REMOVER");
+        }
+        finally {
+            
+        }
+
     };
     
     this.getItems = function() {
